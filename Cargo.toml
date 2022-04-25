@@ -1,0 +1,23 @@
+[package]
+name = "x-gpu-agent"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]] # Bin to run the server
+name = "x-gpu-server"
+path = "src/bin/server.rs"
+
+[[bin]] # Bin to run the agent
+name = "x-gpu-agent"
+path = "src/bin/agent.rs"
+
+[dependencies]
+async-stream = "0.3"
+futures = "0.3.21"
+tonic = { version = "0.7", features = ["tls"] }
+prost = "0.10"
+tokio = { version = "1.17.0", features = ["macros", "rt-multi-thread"] }
+tokio-stream = "0.1.8"
+
+[build-dependencies]
+tonic-build = "0.7"

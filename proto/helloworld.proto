@@ -1,0 +1,27 @@
+syntax = "proto3";
+package helloworld;
+
+service Greeter { rpc SayHello(HelloRequest) returns (HelloReply); }
+
+message HelloRequest { string name = 1; }
+
+message HelloReply { string message = 1; }
+
+// argument
+message SayRequest {
+  // data type and position of data
+  string name = 1;
+}
+
+// return value
+message SayResponse {
+  // data type and position of data
+  string message = 1;
+}
+
+service Say {
+  // function which can be called
+  rpc Send(SayRequest) returns (SayResponse);
+  // we specify that we return a stream
+  rpc SendStream(SayRequest) returns (stream SayResponse);
+}
