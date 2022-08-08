@@ -3,21 +3,21 @@ name = "x-gpu-agent"
 version = "0.1.0"
 edition = "2021"
 
-[[bin]] # Bin to run the server
-name = "x-gpu-server"
-path = "src/bin/server.rs"
-
 [[bin]] # Bin to run the agent
-name = "x-gpu-agent"
+name = "xgpu-agent"
 path = "src/bin/agent.rs"
 
-[dependencies]
-async-stream = "0.3"
-futures = "0.3.21"
-tonic = { version = "0.7", features = ["tls"] }
-prost = "0.10"
-tokio = { version = "1.17.0", features = ["macros", "rt-multi-thread"] }
-tokio-stream = "0.1.8"
+[lib]
+path = "src/lib.rs"
 
-[build-dependencies]
-tonic-build = "0.7"
+[dependencies]
+futures = "0.3.21"
+serde = {version = "1.0.136", features = ["derive"] }
+serde_json = "1.0.79"
+tokio = { version = "1.17.0", features = ["macros", "sync", "rt-multi-thread"] }
+uuid = "1.0.0"
+tungstenite = { version = "0.17.3", features = ["native-tls"] }
+url = "2.2.2"
+reqwest = "0.11.11"
+dotenv = "0.15.0"
+thiserror = "1.0.32"
